@@ -1,0 +1,21 @@
+<%= form_for @document, :html => { :class => 'form-horizontal' } do |f| %>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#text">Text Input</a>
+    </li>
+    <li><a href="#url">URL to Crawling</a></li>
+    <li><a href="#pdf">Upload PDF</a></li>
+  </ul>
+  <div class="control-group">
+    <%= f.label :metadata, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :metadata, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                documents_path, :class => 'btn' %>
+  </div>
+<% end %>

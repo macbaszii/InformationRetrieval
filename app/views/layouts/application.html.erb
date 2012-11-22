@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InformationRetrieval</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="span9">
+      <%= yield %>
+    </div>
+    <div class="span3">
+      <h2> About us </h2>
+      Kiattisak Anoochitarom 
+      Create this Website for Information Retrieval Class
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
