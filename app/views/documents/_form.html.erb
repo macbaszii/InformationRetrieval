@@ -1,10 +1,10 @@
 <%= form_for @document, :html => { :class => 'form-horizontal' } do |f| %>
   <ul class="nav nav-tabs">
     <li class="active">
-      <a href="#text">Text Input</a>
+      <a href="#text" data-toggle="tab">Text Input</a>
     </li>
-    <li><a href="#url">URL to Crawling</a></li>
-    <li><a href="#pdf">Upload PDF</a></li>
+    <li><a href="#url" data-toggle="tab">URL to Crawling</a></li>
+    <li><a href="#pdf" data-toggle="tab">Upload PDF</a></li>
   </ul>
   <div class="control-group">
     <%= f.label :metadata, :class => 'control-label' %>
