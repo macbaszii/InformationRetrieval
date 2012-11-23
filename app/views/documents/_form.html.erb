@@ -1,21 +1,52 @@
 <%= simple_form_for @document, :html => { :class => 'form-horizontal' } do |f| %>
-  <ul class="nav nav-tabs">
+  <ul id="myTab" class="nav nav-tabs">
     <li class="active">
       <a href="#text" data-toggle="tab">Text Input</a>
     </li>
-    <li><a href="#url" data-toggle="tab">URL to Crawling</a></li>
-    <li><a href="#pdf" data-toggle="tab">Upload PDF</a></li>
+    <li class="">
+      <a href="#pdf" data-toggle="tab">URL to Crawling</a>
+    </li>
+    <li class="">
+      <a href="#url" data-toggle="tab">Upload PDF</a>
+    </li>
   </ul>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.input :metadata, :label => "Input Text", :class => 'text_area' %>
+  <div id="text" class="tab-pane active">
+    <div class="control-group">
+      <div class="controls">
+        <%= f.input :metadata, :label => "Input Text", :class => 'text_area' %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
+      <%= submit_tag 'Clear', :type => :reset, :class => 'btn btn-danger' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  documents_path, :class => 'btn btn-link' %>
     </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
-    <%= submit_tag 'Clear', :type => :reset, :class => 'btn btn-danger' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                documents_path, :class => 'btn btn-link' %>
+  <div id="url" class="tab-pane">
+    <div class="control-group">
+      <div class="controls">
+        <%= f.input :metadata, :label => "Input URL", :class => 'url_field', :as => :string %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
+      <%= submit_tag 'Clear', :type => :reset, :class => 'btn btn-danger' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  documents_path, :class => 'btn btn-link' %>
+    </div>
+  </div>
+  <div id="pdf" class="tab-pane">
+    <div class="control-group">
+      <div class="controls">
+        <%= f.input :metadata, :label => "Input PDF File", :class => 'file_field', :as => :file %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
+      <%= submit_tag 'Clear', :type => :reset, :class => 'btn btn-danger' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  documents_path, :class => 'btn btn-link' %>
+    </div>
   </div>
 <% end %>
