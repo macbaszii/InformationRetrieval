@@ -1,3 +1,6 @@
+require 'Nokogiri'
+require 'open-uri'
+
 class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
@@ -40,7 +43,13 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(params[:document])
+    website_to_crawl = params[:document][:metadata]
+    
+    page = Nokogiri::HTML(open(website_to_crawl.to_s))
+    body_tag = page.css('body')
+
+    #body_tag.css('h2').css('a').each { |link| puts link.text }
+    @document = Document.new(:metadata => "#{body_tag.css('a')}")  #params[:document])
 
     respond_to do |format|
       if @document.save
