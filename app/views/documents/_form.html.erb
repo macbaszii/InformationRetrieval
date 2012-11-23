@@ -4,43 +4,21 @@
       <a href="#text" data-toggle="tab">Text Input</a>
     </li>
     <li class="">
-      <a href="#pdf" data-toggle="tab">URL to Crawling</a>
+      <a href="#url" data-toggle="tab">URL to Crawling</a>
     </li>
     <li class="">
-      <a href="#url" data-toggle="tab">Upload PDF</a>
+      <a href="#pdf" data-toggle="tab">Upload PDF</a>
     </li>
   </ul>
-  <div id="text" class="tab-pane active">
-    <div class="control-group">
-      <div class="controls">
-        <%= f.input :metadata, :label => "Input Text", :class => 'text_area' %>
-      </div>
+  <div class="tab-content">
+    <div id="text" class="tab-pane active">
+      <%= f.input :metadata, :label => "Input Text" %>
     </div>
-    <div class="form-actions">
-      <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
-      <%= submit_tag 'Clear', :type => :reset, :class => 'btn btn-danger' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  documents_path, :class => 'btn btn-link' %>
+    <div id="url" class="tab-pane">
+      <%= f.input :metadata, :label => "Input URL", :as => :string %>
     </div>
-  </div>
-  <div id="url" class="tab-pane">
-    <div class="control-group">
-      <div class="controls">
-        <%= f.input :metadata, :label => "Input URL", :class => 'url_field', :as => :string %>
-      </div>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
-      <%= submit_tag 'Clear', :type => :reset, :class => 'btn btn-danger' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  documents_path, :class => 'btn btn-link' %>
-    </div>
-  </div>
-  <div id="pdf" class="tab-pane">
-    <div class="control-group">
-      <div class="controls">
-        <%= f.input :metadata, :label => "Input PDF File", :class => 'file_field', :as => :file %>
-      </div>
+    <div id="pdf" class="tab-pane">
+      <%= f.input :metadata, :label => "Input PDF File", :as => :file %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, 'Submit', :class => 'btn btn-primary' %>
