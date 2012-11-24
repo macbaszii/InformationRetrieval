@@ -43,13 +43,18 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    website_to_crawl = params[:document][:metadata]
-    
-    page = Nokogiri::HTML(open(website_to_crawl.to_s))
-    body_tag = page.css('body')
+    puts params
+    user_input = params[:document][:metadata].to_s
+    if user_input.start_with?('http://')
+      page = Nokogiri::HTML(open(user_input))
+      body_tag = page.css('body')
+      @document = Document.new(:metadata => "#{body_tag.css('a')}")
+    else
+      @document = Document.new(:metadata => "#{user_input}")
+    end
 
     #body_tag.css('h2').css('a').each { |link| puts link.text }
-    @document = Document.new(:metadata => "#{body_tag.css('a')}")  #params[:document])
+    #params[:document])
 
     respond_to do |format|
       if @document.save
