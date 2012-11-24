@@ -1,3 +1,3 @@
 class Document < ActiveRecord::Base
-  attr_accessible :metadata
+  attr_accessible :crawl_url, :user_text
 end

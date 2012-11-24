@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  metadata: MyText
+  user_text: MyText
+  crawl_url: MyString
 
 two:
-  metadata: MyText
+  user_text: MyText
+  crawl_url: MyString

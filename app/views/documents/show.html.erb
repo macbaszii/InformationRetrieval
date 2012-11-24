@@ -4,8 +4,12 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:metadata) %>:</strong></dt>
-  <dd><%= @document.metadata %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_text) %>:</strong></dt>
+  <% if not @document.user_text.nil? %>
+    <dd><%= @document.user_text %></dd>
+  <% elsif not @document.crawl_url.nil? %>
+    <dd><%= @document.crawl_url %></dd>
+  <% end %>
 </dl>
 
 <div class="form-actions">

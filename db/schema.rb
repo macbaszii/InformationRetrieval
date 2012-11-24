@@ -11,10 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122183824) do
+ActiveRecord::Schema.define(:version => 20121124154110) do
 
   create_table "documents", :force => true do |t|
-    t.text     "metadata"
+    t.text     "user_text"
+    t.string   "crawl_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

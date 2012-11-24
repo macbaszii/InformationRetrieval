@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:metadata) %></th>
+      <!-- <th><%= model_class.human_attribute_name(:user_text) %></th>
+            <th><%= model_class.human_attribute_name(:crawl_url) %></th> -->
+      <th>User Data</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -15,7 +17,11 @@
     <% @documents.each do |document| %>
       <tr>
         <td><%= link_to document.id, document_path(document) %></td>
-        <td><%= document.metadata %></td>
+        <% if not document.user_text.nil? %>
+          <td><%= document.user_text %></td>
+        <% elsif not document.crawl_url.nil? %>
+          <td><%= document.crawl_url %></td>
+        <% end %>
         <td><%=l document.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
