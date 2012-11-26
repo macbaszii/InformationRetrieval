@@ -45,6 +45,7 @@ class DocumentsController < ApplicationController
   def create
     user_url_input = params[:document][:crawl_url]
     user_text_input = params[:document][:user_text]
+    user_pdf_input = params[:document][:pdf]
     
     if not user_url_input.length == 0
       if user_url_input.start_with?('http://')
@@ -56,6 +57,8 @@ class DocumentsController < ApplicationController
       end
     elsif not user_text_input.length == 0
       @document = Document.new(:user_text => "#{user_text_input}", :crawl_url => nil)
+    elsif not user_pdf_input.nil?
+      @document = Document.new(:user_text => "Has PDF File", :crawl_url => nil) 
     end
 
     #body_tag.css('h2').css('a').each { |link| puts link.text }
