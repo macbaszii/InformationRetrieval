@@ -51,14 +51,14 @@ class DocumentsController < ApplicationController
       if user_url_input.start_with?('http://')
         page = Nokogiri::HTML(open(user_url_input))
         body_tag = page.css('body')
-        @document = Document.new(:crawl_url => "#{body_tag.css('a')}", :user_text => nil)
+        @document = Document.new(:crawl_url => "#{body_tag.css('a')}", :user_text => nil, :pdf => nil)
       else
-        @document = Document.new(:crawl_url => "#{user_url_input}", :user_text => nil)
+        @document = Document.new(:crawl_url => "#{user_url_input}", :user_text => nil, :pdf => nil)
       end
     elsif not user_text_input.length == 0
-      @document = Document.new(:user_text => "#{user_text_input}", :crawl_url => nil)
+      @document = Document.new(:user_text => "#{user_text_input}", :crawl_url => nil , :pdf => nil)
     elsif not user_pdf_input.nil?
-      @document = Document.new(:user_text => "Has PDF File", :crawl_url => nil) 
+      @document = Document.new(:user_text => nil, :crawl_url => nil, :pdf => user_pdf_input) 
     end
 
     #body_tag.css('h2').css('a').each { |link| puts link.text }

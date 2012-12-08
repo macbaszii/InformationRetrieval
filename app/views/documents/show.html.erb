@@ -9,6 +9,8 @@
     <dd><%= @document.user_text %></dd>
   <% elsif not @document.crawl_url.nil? %>
     <dd><%= @document.crawl_url %></dd>
+  <% else %>
+    <dd><%= @document.pdf_file_name %></dd>
   <% end %>
 </dl>
 

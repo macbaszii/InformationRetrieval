@@ -21,8 +21,10 @@
           <td><%= document.user_text %></td>
         <% elsif not document.crawl_url.nil? %>
           <td><%= document.crawl_url %></td>
+        <% else %>
+          <td><%= document.pdf_file_name %></td>
         <% end %>
-        <td><%=l document.created_at %></td>
+        <td><%= document.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_document_path(document), :class => 'btn btn-mini' %>
